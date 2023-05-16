@@ -2,17 +2,20 @@
 
 ## Dependencies installation and execution of the program
 You will need to install two python libraries using pip, by following command:
-    ```
-    pip install requests pyyaml
-    ```
+    
+```
+pip install requests pyyaml
+```
 Then you will execute the follwing command from the current project directory to exceute the program:
-    ```
-    py sre-exercise.py
-    ```
+
+```
+py sre-exercise.py
+```
 Then you will have to provide an input argument to a file path with a list of HTTP endpoints in YAML format, here in our case we will provide input as 
-    ``` 
-    sample-input.yaml
-    ```
+
+``` 
+sample-input.yaml
+```
 
 ## Overview
 This is implementation of a program to check the health of a set of HTTP endpoints. A basic overview is given in this section. Additional details are provided in the Prompt section. Read an input argument to a file path with a list of HTTP endpoints in YAML format. Test the health of the endpoints every 15 seconds. It will keep track of the availability percentage of the HTTP domain names being monitored by the program. And also log the cumulative availability percentage for each domain to the console after the completion of each 15-second test cycle.
