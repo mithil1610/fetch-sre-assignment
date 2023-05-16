@@ -19,6 +19,7 @@ This is implementation of a program to check the health of a set of HTTP endpoin
 
 ## Prompt 
 ## Sample input file
+```
 - headers:
     user-agent: fetch-synthetic-monitor
   method: GET
@@ -38,6 +39,7 @@ This is implementation of a program to check the health of a set of HTTP endpoin
   url: https://fetch.com/some/post/endpoint
 - name: www.fetchrewards.com index page
   url: https://www.fetchrewards.com/
+ ```
 
 ## Parsing the program input 
 The program must accept a single, required input argument to a configuration file path. A well-formed configuration file is a YAML list. Each entry in the YAML list follows a consistent schema, and contains enough information for the program to send a well-formed HTTP request. You may assume that the contents of a configuration file given to your program are valid (you do not need to validate the schema of the configuration file).
@@ -45,6 +47,7 @@ The program must accept a single, required input argument to a configuration fil
 An example of a valid YAML configuration file is included in the Sample input file section. While you may use this particular file for testing and validation purposes, your program must accept an arbitrary file path as its input.
 
 Each HTTP endpoint element in the YAML list has the following schema:
+```
     ● name (string, required) — A free-text name to describe the HTTP endpoint.
     ● url (string, required) — The URL of the HTTP endpoint.
         ○ You may assume that the URL is always a valid HTTP or HTTPS address.
@@ -57,11 +60,14 @@ Each HTTP endpoint element in the YAML list has the following schema:
     ● body (string, optional) — The HTTP body to include in the request.
         ○ If this field is present, you should assume it's a valid JSON-encoded string. You do not need to account for non-JSON request bodies.
         ○ If this field is omitted, no body is sent in the request.
+```
 
 ## Running the health checks
 After parsing the YAML input configuration file, the program should send an HTTP request to each endpoint every 15 seconds. Each time an HTTP request is executed by the program, determine if the outcome is UP or DOWN:
+```
     ● UP — The HTTP response code is 2xx (any 200–299 response code) and the response latency is less than 500 ms.
     ● DOWN — The endpoint is not UP.
+```
 
 We will be testing the endpoints every 15 seconds until the user manually exits the program.
 
@@ -77,6 +83,5 @@ Here’s the complete expected output to the console of a sample execution of th
     
     fetch.com has 33% availability percentage
     www.fetchrewards.com has 100% availability percentage
-
     fetch.com has 67% availability percentage
     www.fetchrewards.com has 50% availability percentage
